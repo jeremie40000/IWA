@@ -1,0 +1,3 @@
+[submodule "stopcovid-front"]
+	path = stopcovid-front
+	url = ./stopcovid-front/
