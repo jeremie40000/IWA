@@ -48,7 +48,7 @@ services:
       depends_on:
         - postgres
   backend:
-      build: projectIWA_backend-main/build/docker/.
+      build: projectIWA_backend-main/.
       ports:
         - 5000:5000
       depends_on:
