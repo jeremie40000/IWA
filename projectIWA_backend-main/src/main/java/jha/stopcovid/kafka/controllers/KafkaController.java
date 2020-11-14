@@ -16,6 +16,6 @@ public class KafkaController {
 
     @PostMapping("/publish")
     public void sendInformationToTopic(@RequestBody Object data) {
-        this.kafkaProducer.sendInformation(data);
+        this.kafkaProducer.sendInformation(data, "topic-geoloc");
     }
 }
