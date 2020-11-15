@@ -11,6 +11,12 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic topicGeoloc() {
         return TopicBuilder.name("topic-geoloc")
+                .config(TopicConfig.RETENTION_MS_CONFIG, "180000").build();
+    }
+
+    @Bean
+    public NewTopic topicSuspicious() {
+        return TopicBuilder.name("topic-suspisious")
                 .config(TopicConfig.RETENTION_MS_CONFIG, "900000").build();
     }
 }
