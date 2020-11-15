@@ -1,4 +1,4 @@
-package jha.stopcovid.geolocation.services;
+package jha.stopcovid.services;
 
 import org.springframework.stereotype.Service;
 

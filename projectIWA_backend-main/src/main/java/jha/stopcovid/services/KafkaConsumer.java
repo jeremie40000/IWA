@@ -1,4 +1,4 @@
-package jha.stopcovid.kafka.services;
+package jha.stopcovid.services;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

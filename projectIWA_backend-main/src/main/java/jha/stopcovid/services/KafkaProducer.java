@@ -1,4 +1,4 @@
-package jha.stopcovid.kafka.services;
+package jha.stopcovid.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;

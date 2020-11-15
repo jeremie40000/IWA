@@ -1,6 +1,6 @@
-package jha.stopcovid.geolocation.controllers;
+package jha.stopcovid.controllers;
 
-import jha.stopcovid.kafka.services.KafkaProducer;
+import jha.stopcovid.services.KafkaProducer;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
-package jha.stopcovid.kafka.controllers;
+package jha.stopcovid.controllers;
 
-import jha.stopcovid.kafka.services.KafkaProducer;
+import jha.stopcovid.services.KafkaProducer;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
