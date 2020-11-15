@@ -16,8 +16,8 @@ const HomePage = () => {
 
     const scheduleSending = () => {
         var ruleSendEvery5M = new schedule.RecurrenceRule();
-        ruleSendEvery5M.minute = [0,5,10,15,20,25,30,35,40,45,55];
-        ruleSendEvery5M.second = 0;
+        //ruleSendEvery5M.minute = [0,5,10,15,20,25,30,35,40,45, 50, 55];
+        ruleSendEvery5M.second = [0,5,10,15,20,25,30,35,40,45, 50, 55];
         var eventNotif = schedule.scheduleJob(ruleSendEvery5M, function(){
             sendLocalisation();
         });

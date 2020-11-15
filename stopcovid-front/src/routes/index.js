@@ -5,8 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Menu from '../components/Menu';
 import HomePage from '../pages/HomePage';
-/*import { PrivateRoute } from '../utilities/PrivateRoute';
-import ProtectedPage from '../pages/ProtectedPage';*/
 
 
 export const AppRouter = () => {
@@ -19,7 +17,6 @@ export const AppRouter = () => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={HomePage} />
-                    {/*<PrivateRoute roles={['RealmAdmin']} path="/protected" component={ProtectedPage} />*/}
                 </Switch>
             </BrowserRouter>
         </>

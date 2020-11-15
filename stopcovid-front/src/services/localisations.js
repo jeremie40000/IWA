@@ -1,12 +1,11 @@
 export const sendLocalisationToApi = (latitude, longitude, timestamp, token) => {
     const data = JSON.stringify({latitude: latitude, longitude: longitude, timestamp: timestamp});
-    fetch(`http://localhost:5000/sendPosition`,
+    //const data = {latitude: latitude, longitude: longitude, timestamp: timestamp};
+    return fetch(`http://localhost:3001/publish`,
         {
             method: 'POST',
             headers: {
-                Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `bearer ${token}`
             },
-            body: data})
+            body: data}).then(response => response.json()).catch(e => {console.error(e)})
 }
