@@ -8,7 +8,7 @@ import java.util.Date;
 public class Contact {
 
     @Id
-    private String id_contact;
+    private Long id_contact;
 
     private String id_user1;
 
