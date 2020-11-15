@@ -1,4 +1,4 @@
-package jha.stopcovid.kafka.configuration;
+package jha.stopcovid.configuration;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.config.TopicConfig;
