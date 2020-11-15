@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
     "kafka-node": "^5.0.0",
     "keycloak-js": "^11.0.3",
     "moment": "^2.29.1",
@@ -15,9 +16,11 @@
     "node-scheduler": "^1.0.0",
     "nodemon": "^2.0.6",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "reactn": "^2.2.7",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

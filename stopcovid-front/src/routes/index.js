@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Menu from '../components/Menu';
 import HomePage from '../pages/HomePage';
+import {sendLocalisationToApi} from "../services/localisations";
 
 
 export const AppRouter = () => {
