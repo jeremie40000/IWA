@@ -1,5 +1,6 @@
 package jha.stopcovid.controllers;
 
+import jha.stopcovid.models.GeolocationData;
 import jha.stopcovid.services.KafkaProducer;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class KafkaController {
         this.kafkaProducer = kafkaProducer;
     }
     @PostMapping("/publish")
-    public void sendInformationToTopic(@RequestBody Object data) {
+    public void sendInformationToTopic(@RequestBody GeolocationData data) {
         this.kafkaProducer.sendInformation(data, "topic-geoloc");
     }
 }

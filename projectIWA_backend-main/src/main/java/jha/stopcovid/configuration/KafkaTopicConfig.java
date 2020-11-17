@@ -16,7 +16,7 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topicSuspicious() {
-        return TopicBuilder.name("topic-suspisious")
+        return TopicBuilder.name("topic-suspicious")
                 .config(TopicConfig.RETENTION_MS_CONFIG, "900000").build();
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaProducer {
 
-    private static final String TOPIC= "topic-geoloc";
 
     @Autowired
     private org.springframework.kafka.core.KafkaTemplate<String, Object> KafkaTemplate;

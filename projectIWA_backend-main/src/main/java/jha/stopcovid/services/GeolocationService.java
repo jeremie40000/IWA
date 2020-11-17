@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GeolocationService {
 
-    public boolean distanceIsValid(Double lat1, Double long1, Double lat2, Double long2) {
+    public static boolean distanceIsValid(Double lat1, Double long1, Double lat2, Double long2) {
         if ((lat1 == lat2) & (long1 == long2)) {
             return true;
         }
@@ -22,7 +22,8 @@ public class GeolocationService {
             dist = dist * 180 / Math.PI;
             dist = dist * 60 * 1.1515;
             dist = dist * 1.609344 * 1000;
-            return dist <= 10;
+            System.out.println("dist = " + dist);
+            return dist <= 50;
         }
     }
 }
