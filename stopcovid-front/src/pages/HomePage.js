@@ -45,7 +45,7 @@ const HomePage = () => {
 
     const scheduleFakeSending = () => {
         var ruleSendEveryMinute = new schedule.RecurrenceRule();
-        ruleSendEveryMinute.minute = [parseInt(moment().format('mm'))+1, parseInt(moment().format('mm'))+3];
+        ruleSendEveryMinute.minute = [parseInt(moment().format('mm'))+1, parseInt(moment().format('mm'))+2, parseInt(moment().format('mm'))+3, parseInt(moment().format('mm'))+4];
         ruleSendEveryMinute.second = 0;
         var eventNotif = schedule.scheduleJob(ruleSendEveryMinute, () => {
             scheduleFakeSendingSerie();
@@ -63,7 +63,7 @@ const HomePage = () => {
     const sendFakeLocalisation = () => {
         if(keycloak.authenticated){
             const position = fakeDataArrays[Math.trunc(numberOfFakeDataSent/10)][numberOfFakeDataSent%10];
-            sendLocalisationToApi(keycloak.subject,position.latitude, position.longitude, moment().unix(),keycloak.idToken)
+            sendLocalisationToApi(position.idUser,position.latitude, position.longitude, moment().unix(),keycloak.idToken)
             console.log(numberOfFakeDataSent)
             console.log(position)
             if (numberOfFakeDataSent % 10 === 9) {

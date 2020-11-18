@@ -36,7 +36,6 @@ public class LocalisationDataset {
         ArrayList<ContactData> arrayContact = new ArrayList<ContactData>();
         for (int element = 0; element < values.size(); element++) {
             if (GeolocationService.distanceIsValid(Double.parseDouble(values.get(element).getLatitude()), Double.parseDouble(values.get(element).getLongitude()), Double.parseDouble(geolocationData.getLatitude()), Double.parseDouble(geolocationData.getLongitude()))) {
-                System.out.println("NEW CONTACT");
                 arrayContact.add(new ContactData(geolocationData.getIdUser(), values.get(element).getIdUser(), Long.toString(timestamp)));
             }
         }

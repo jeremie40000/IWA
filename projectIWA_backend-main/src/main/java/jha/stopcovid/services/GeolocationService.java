@@ -22,7 +22,6 @@ public class GeolocationService {
             dist = dist * 180 / Math.PI;
             dist = dist * 60 * 1.1515;
             dist = dist * 1.609344 * 1000;
-            System.out.println("dist = " + dist);
             return dist <= 50;
         }
     }
