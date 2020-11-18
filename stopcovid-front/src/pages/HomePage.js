@@ -63,7 +63,7 @@ const HomePage = () => {
     const sendFakeLocalisation = () => {
         if(keycloak.authenticated){
             const position = fakeDataArrays[Math.trunc(numberOfFakeDataSent/10)][numberOfFakeDataSent%10];
-            sendLocalisationToApi(position.idUser,position.latitude, position.longitude, moment().unix(),keycloak.idToken)
+            sendLocalisationToApi(position.idUser,position.latitude, position.longitude, moment().unix(),keycloak.token)
             console.log(numberOfFakeDataSent)
             console.log(position)
             if (numberOfFakeDataSent % 10 === 9) {
@@ -72,7 +72,6 @@ const HomePage = () => {
                 my_job.cancel();
             }
             console.log('about to increment')
-            //setNumberOfFakeDataSent(prevState => prevState+1);
             numberOfFakeDataSent++;
         }
     }

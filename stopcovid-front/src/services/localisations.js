@@ -6,6 +6,7 @@ export const sendLocalisationToApi = (idUser, latitude, longitude, timestamp, to
         {
             method: 'POST',
             headers: {
+                'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json',
             },
             body: data})
