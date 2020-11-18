@@ -17,7 +17,8 @@ public class ContactService {
 
     public void findContacts(String idUser) {
         contactRepository.findAllContacts(idUser);
-        var all = userRepository.findAll();
+        var all = contactRepository.findAll();
+        System.out.println(all.get(0).getId_user1());
         System.out.println("test : "+contactRepository.findAllContacts(idUser));
     }
 
