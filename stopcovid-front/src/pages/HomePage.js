@@ -19,12 +19,6 @@ const HomePage = () => {
     React.useEffect(() => {
         const jobNamesBeforeCancel = schedule.scheduledJobs;
         console.log("Jobs running before cancel : ", jobNamesBeforeCancel);
-
-        /*for(jobName in jobNamesBeforeCancel){
-            var job = 'jobList.' + jobName;
-            console.log(job)
-            eval(job+'.cancel()');
-        }*/
         for (const job in schedule.scheduledJobs) schedule.cancelJob(job);
         console.log('dataChoice = ' + dataChoice)
         dataChoice == 1 && scheduleRealSending();
@@ -44,14 +38,14 @@ const HomePage = () => {
         if(keycloak.authenticated){
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log('position : (', position.coords.latitude, ', ', position.coords.longitude, ')', 'at : ', moment(position.timestamp).format('mm'));
-                sendLocalisationToApi(position.coords.latitude, position.coords.longitude, position.timestamp,keycloak.idToken)
+                sendLocalisationToApi(keycloak.subject,position.coords.latitude, position.coords.longitude, position.timestamp,keycloak.idToken)
             });
         }
     }
 
     const scheduleFakeSending = () => {
         var ruleSendEveryMinute = new schedule.RecurrenceRule();
-        ruleSendEveryMinute.minute = [parseInt(moment().format('mm'))+1, parseInt(moment().format('mm'))+2];
+        ruleSendEveryMinute.minute = [parseInt(moment().format('mm'))+1, parseInt(moment().format('mm'))+3];
         ruleSendEveryMinute.second = 0;
         var eventNotif = schedule.scheduleJob(ruleSendEveryMinute, () => {
             scheduleFakeSendingSerie();
@@ -69,7 +63,7 @@ const HomePage = () => {
     const sendFakeLocalisation = () => {
         if(keycloak.authenticated){
             const position = fakeDataArrays[Math.trunc(numberOfFakeDataSent/10)][numberOfFakeDataSent%10];
-            sendLocalisationToApi(position.latitude, position.longitude, moment().unix(),keycloak.idToken)
+            sendLocalisationToApi(keycloak.subject,position.latitude, position.longitude, moment().unix(),keycloak.idToken)
             console.log(numberOfFakeDataSent)
             console.log(position)
             if (numberOfFakeDataSent % 10 === 9) {

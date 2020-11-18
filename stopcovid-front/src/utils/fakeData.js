@@ -8,7 +8,7 @@ export const fakeDataArrays =
             {latitude: '43.639818', longitude: '3.847544'},//avec celui d'avant
             {latitude: '43.635736', longitude: '3.843966'},
             {latitude: '43.631701', longitude: '3.837915'},
-            {latitude: '43.637694', longitude: '3.859637'},//avec les 2 premiers
+            {latitude: '43.640087', longitude: '3.855652'},//avec les 2 premiers
             {latitude: '43.63496', longitude: '3.873338'},
             {latitude: '43.622602', longitude: '3.872651'}
         ],
