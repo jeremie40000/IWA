@@ -19,9 +19,9 @@ public class UserController {
     ContactService contactService;
 
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public void isPositive(@PathVariable String idUser){
-        //UserService.isPositive(idUser);
+        userService.changeState(idUser);
     }
 
 }
