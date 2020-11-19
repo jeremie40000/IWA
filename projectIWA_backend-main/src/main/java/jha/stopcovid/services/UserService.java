@@ -14,5 +14,9 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    public void isPositive(String idUser) {
+        userRepository.putState(idUser);
+    }
+
 
 }
