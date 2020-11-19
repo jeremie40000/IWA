@@ -26,7 +26,7 @@ public class UserService {
     @Autowired
     EmailService emailService;
 
-    public  void changeState(String idUser) {
+    public void changeState(String idUser) {
         User user = userRepository.findUserById(idUser);
         user.setIs_infected(true);
         user.setInfection_date(new Timestamp(System.currentTimeMillis()).toString());
@@ -37,10 +37,16 @@ public class UserService {
 
     public void getContactedUsers(String idUser) {
         ArrayList<Contact> contacts = contactRepository.findAllContacts(idUser);
+        System.out.println("contacts avec le user : "+idUser+" -->");
+        for (int element = 0; element<contacts.size();element++) {
+            System.out.println("c1: "+contacts.get(0).getId_user1()+" c2: "+ contacts.get(0).getId_user2());
+        }
         for (int element = 0; element<contacts.size();element++) {
             if (contacts.get(0).getId_user1() != idUser) {
+                System.out.println("email Send1");
                 this.sendEmailToUser(contacts.get(element).getId_user1(), contacts.get(element).getContacted_on());
             } else {
+                System.out.println("email Send2");
                 this.sendEmailToUser(contacts.get(element).getId_user2(), contacts.get(element).getContacted_on());
             }
         }
