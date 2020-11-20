@@ -18,7 +18,6 @@ public class UserController {
 
     @PutMapping("/{idUser}")
     public void isPositive(@PathVariable String idUser){
-        System.out.println("ici la putain de ta mere");
         userService.changeState(idUser);
     }
 
