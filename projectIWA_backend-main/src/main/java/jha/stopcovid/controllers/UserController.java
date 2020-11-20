@@ -23,8 +23,7 @@ public class UserController {
 
     @PutMapping("/{idUser}")
     public void isPositive(@PathVariable @Length(min = 36,max = 36) String idUser){
-        System.out.println("ici");
-        //userService.changeState(idUser);
+        userService.changeState(idUser);
     }
 
 }
