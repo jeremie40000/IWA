@@ -2,11 +2,16 @@ package jha.stopcovid.controllers;
 
 import jha.stopcovid.services.ContactService;
 import jha.stopcovid.services.UserService;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+import javax.validation.constraints.Min;
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@Validated
 @RequestMapping("/users")
 public class UserController {
 
@@ -17,9 +22,9 @@ public class UserController {
     ContactService contactService;
 
     @PutMapping("/{idUser}")
-    public void isPositive(@PathVariable String idUser){
-        System.out.println("ici la putain de ta mere");
-        userService.changeState(idUser);
+    public void isPositive(@PathVariable @Length(min = 36,max = 36) String idUser){
+        System.out.println("ici");
+        //userService.changeState(idUser);
     }
 
 }
