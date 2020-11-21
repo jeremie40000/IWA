@@ -35,7 +35,7 @@ public class LocalisationDataset {
     public ArrayList<ContactData> geolocationComparison(GeolocationData geolocationData) {
         ArrayList<ContactData> arrayContact = new ArrayList<ContactData>();
         for (int element = 0; element < values.size(); element++) {
-            if (GeolocationService.distanceIsValid(Double.parseDouble(values.get(element).getLatitude()), Double.parseDouble(values.get(element).getLongitude()), Double.parseDouble(geolocationData.getLatitude()), Double.parseDouble(geolocationData.getLongitude()))) {
+            if (GeolocationService.distanceIsValid(values.get(element).getLatitude(), values.get(element).getLongitude(), geolocationData.getLatitude(), geolocationData.getLongitude())) {
                 arrayContact.add(new ContactData(geolocationData.getIdUser(), values.get(element).getIdUser(), Long.toString(timestamp)));
             }
         }

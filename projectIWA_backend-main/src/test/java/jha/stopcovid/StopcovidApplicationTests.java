@@ -38,13 +38,13 @@ class StopcovidApplicationTests {
 
 	@Test
 	void publishRequestTestSucceed() throws Exception{
-		String json = asJsonString(new GeolocationData("74b4a039-4b17-462c-ab68-fc4f208a504d", "43.63496", "3.873338", "1605886929"));
+		String json = asJsonString(new GeolocationData("74b4a039-4b17-462c-ab68-fc4f208a504d", 43.63496, 3.873338, (long) 1605886929));
 		mockMvc.perform(post("/publish").contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isOk());
 	}
 
 	@Test
 	void publishRequestTestBadBody() throws Exception{
-		String json = asJsonString(new GeolocationData("74b4a039-4b17-462c-ab68-fc4f208a504d", "43.63496", "3.873338", "1605886929"));
+		String json = asJsonString(new GeolocationData("74b4a039-4b17-462c-ab68-fc4f208a504d", 43.63496, 3.873338, (long) 1605886929));
 		mockMvc.perform(post("/publish").contentType(MediaType.APPLICATION_JSON).content("{toto: toto2}")).andExpect(status().isBadRequest());
 	}
 
