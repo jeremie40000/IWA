@@ -30,18 +30,19 @@ public class ContactService {
     public void addContactToDB(ContactData contact) {
         Contact contactUpdate = contactRepository.contactExist(contact.getIdUser1(), contact.getIdUser2());
         if (contactUpdate != null) {
-            System.out.println("already exist");
             contactUpdate.setContacted_on(contact.getTimestamp());
             contactRepository.saveAndFlush(contactUpdate);
         } else {
-            System.out.println("nouveau contact");
             Contact contactModel = new Contact(contact.getIdUser1(), contact.getIdUser2(),contact.getTimestamp());
-            contactRepository.save(contactModel);
+            contactRepository.saveAndFlush(contactModel);
         }
     }
 
     public void clearSafeContacts(Timestamp timestamp) {
         var contacts = contactRepository.findAll();
+        if (contacts.size() == 0) {
+            throw new IllegalStateException("List is empty");
+        }
         for (int el = 0; el<contacts.size(); el++) {
             if (dateExpired(timestamp, new Timestamp(Long.parseLong(contacts.get(el).getContacted_on()) * 1000)) == true) {
                 contactRepository.delete(contacts.get(0));

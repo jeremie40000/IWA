@@ -34,7 +34,7 @@ public class KafkaConsumer {
     @KafkaListener(topics="topic-geoloc", groupId ="my_group_id")
     public void getInformationGeolocation(GeolocationData geolocationData) {
         //System.out.println(geolocationData.toString());
-        long timestampNewData = new Long(geolocationData.getTimestamp());
+        long timestampNewData = geolocationData.getTimestamp();
         //timestampNewData = (((timestampNewData / 60) * 60) / 300) * 300;
         timestampNewData = ((timestampNewData / 60) * 60);
         //System.out.println(timestampNewData);

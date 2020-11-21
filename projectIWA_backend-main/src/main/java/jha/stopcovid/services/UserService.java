@@ -29,7 +29,10 @@ public class UserService {
     public void changeState(String idUser) throws NullPointerException {
         User user = userRepository.findUserById(idUser);
         if(user == null){
-            throw new NullPointerException();
+            throw new NullPointerException("user does not exist");
+        }
+        if(user.getIs_infected().equals(true)) {
+            throw new IllegalArgumentException("user is already positive");
         }
         user.setIs_infected(true);
         user.setInfection_date(new Timestamp(System.currentTimeMillis()).toString());
@@ -40,6 +43,9 @@ public class UserService {
 
     public void getContactedUsers(String idUser) {
         ArrayList<Contact> contacts = contactRepository.findAllContacts(idUser);
+        if (contacts.size() == 0) {
+            throw new IllegalStateException("ArrayList is empty");
+        }
         for (int element = 0; element<contacts.size();element++) {
             if (contacts.get(element).getId_user1().equals(idUser)) {
                 this.sendEmailToUser(contacts.get(element).getId_user2(), contacts.get(element).getContacted_on());
@@ -53,6 +59,9 @@ public class UserService {
         Timestamp ts=new Timestamp(Long.parseLong(contactedOn) * 1000);
         Date contactedDate = new Date(ts.getTime());
         User userInContact = userRepository.getUserById(idUser);
+        if ( userInContact == null) {
+            throw new NullPointerException("user does not exist");
+        }
         emailService.sendMail(userInContact.getEmail(), contactedDate.toString());
     }
 
