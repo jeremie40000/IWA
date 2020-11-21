@@ -2,10 +2,7 @@ package jha.stopcovid.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "contacts")
 @Access(AccessType.FIELD)
@@ -13,6 +10,7 @@ import javax.persistence.Id;
 public class Contact {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_contact;
 
     private String id_user1;
@@ -20,6 +18,16 @@ public class Contact {
     private String id_user2;
 
     private String contacted_on;
+
+    public Contact(String id_user1, String id_user2, String contacted_on) {
+        this.id_user1 = id_user1;
+        this.id_user2 = id_user2;
+        this.contacted_on = contacted_on;
+    }
+
+    public Contact() {
+
+    }
 
     public Long getId_contact() {
         return id_contact;

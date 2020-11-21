@@ -53,7 +53,6 @@ public class UserService {
         Timestamp ts=new Timestamp(Long.parseLong(contactedOn) * 1000);
         Date contactedDate = new Date(ts.getTime());
         User userInContact = userRepository.getUserById(idUser);
-        System.out.println("send to : "+userInContact.getEmail());
         emailService.sendMail(userInContact.getEmail(), contactedDate.toString());
     }
 
