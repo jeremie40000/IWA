@@ -26,8 +26,11 @@ public class UserService {
     @Autowired
     EmailService emailService;
 
-    public void changeState(String idUser) {
+    public void changeState(String idUser) throws NullPointerException {
         User user = userRepository.findUserById(idUser);
+        if(user == null){
+            throw new NullPointerException();
+        }
         user.setIs_infected(true);
         user.setInfection_date(new Timestamp(System.currentTimeMillis()).toString());
         userRepository.saveAndFlush(user);
