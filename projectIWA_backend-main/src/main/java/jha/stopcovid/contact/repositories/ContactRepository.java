@@ -1,6 +1,6 @@
-package jha.stopcovid.Repositories;
+package jha.stopcovid.contact.repositories;
 
-import jha.stopcovid.models.Contact;
+import jha.stopcovid.contact.models.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,4 +1,4 @@
-package jha.stopcovid.models;
+package jha.stopcovid.contact.business;
 
 public class ContactData {
 

@@ -1,4 +1,4 @@
-package jha.stopcovid.models;
+package jha.stopcovid.user.models;
 
 import javax.persistence.Entity;
 import  javax.persistence.Id;
@@ -16,6 +16,13 @@ public class User {
     private String infection_date;
 
     public User() {
+    }
+
+    public User(String id, String email, Boolean is_infected, String infection_date) {
+        Id = id;
+        this.email = email;
+        this.is_infected = is_infected;
+        this.infection_date = infection_date;
     }
 
     public String getId() {

@@ -1,4 +1,4 @@
-package jha.stopcovid.models;
+package jha.stopcovid.geolocation.models;
 
 import jdk.jfr.Timestamp;
 import org.hibernate.validator.constraints.*;

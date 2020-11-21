@@ -1,7 +1,8 @@
-package jha.stopcovid.services;
+package jha.stopcovid.geolocation.business;
 
-import jha.stopcovid.models.ContactData;
-import jha.stopcovid.models.GeolocationData;
+import jha.stopcovid.geolocation.services.GeolocationService;
+import jha.stopcovid.contact.business.ContactData;
+import jha.stopcovid.geolocation.models.GeolocationData;
 
 import java.util.ArrayList;
 

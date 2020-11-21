@@ -1,6 +1,6 @@
-package jha.stopcovid.Repositories;
+package jha.stopcovid.user.repositories;
 
-import jha.stopcovid.models.User;
+import jha.stopcovid.user.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

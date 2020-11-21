@@ -1,7 +1,10 @@
-package jha.stopcovid.services;
+package jha.stopcovid.kafka.services;
 
-import jha.stopcovid.models.ContactData;
-import jha.stopcovid.models.GeolocationData;
+import jha.stopcovid.contact.business.ContactData;
+import jha.stopcovid.geolocation.models.GeolocationData;
+import jha.stopcovid.contact.business.ContactDataset;
+import jha.stopcovid.contact.services.ContactService;
+import jha.stopcovid.geolocation.business.LocalisationDataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

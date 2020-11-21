@@ -1,4 +1,4 @@
-package jha.stopcovid.models;
+package jha.stopcovid.contact.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,14 +1,12 @@
-package jha.stopcovid.services;
+package jha.stopcovid.user.services;
 
-import javassist.NotFoundException;
-import jha.stopcovid.Repositories.ContactRepository;
-import jha.stopcovid.Repositories.UserRepository;
-import jha.stopcovid.models.Contact;
-import jha.stopcovid.models.User;
+import jha.stopcovid.contact.repositories.ContactRepository;
+import jha.stopcovid.user.repositories.UserRepository;
+import jha.stopcovid.contact.models.Contact;
+import jha.stopcovid.notification.services.EmailService;
+import jha.stopcovid.user.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -43,9 +41,7 @@ public class UserService {
 
     public void getContactedUsers(String idUser) {
         ArrayList<Contact> contacts = contactRepository.findAllContacts(idUser);
-        if (contacts.size() == 0) {
-            throw new IllegalStateException("ArrayList is empty");
-        }
+
         for (int element = 0; element<contacts.size();element++) {
             if (contacts.get(element).getId_user1().equals(idUser)) {
                 this.sendEmailToUser(contacts.get(element).getId_user2(), contacts.get(element).getContacted_on());

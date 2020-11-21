@@ -1,4 +1,4 @@
-package jha.stopcovid.services;
+package jha.stopcovid.notification.services;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
