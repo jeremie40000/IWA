@@ -25,7 +25,7 @@ public class UserService {
     EmailService emailService;
 
     public void changeState(String idUser) throws NullPointerException {
-        User user = userRepository.findUserById(idUser);
+        User user = userRepository.getUserById(idUser);
         if(user == null){
             throw new NullPointerException("user does not exist");
         }
@@ -36,7 +36,6 @@ public class UserService {
         user.setInfection_date(new Timestamp(System.currentTimeMillis()).toString());
         userRepository.saveAndFlush(user);
         this.getContactedUsers(idUser);
-
     }
 
     public void getContactedUsers(String idUser) {

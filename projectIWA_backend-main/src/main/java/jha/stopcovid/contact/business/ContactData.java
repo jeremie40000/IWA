@@ -1,9 +1,13 @@
 package jha.stopcovid.contact.business;
 
-public class ContactData {
+import org.hibernate.validator.constraints.Length;
 
+public class ContactData {
+    @Length(min = 36, max = 36)
     private String idUser1;
+    @Length(min = 36, max = 36)
     private String idUser2;
+    @Length(min=10, max = 10)
     private String timestamp;
 
 

@@ -1,8 +1,9 @@
-package jha.stopcovid.user;
+package jha.stopcovid.geolocation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jha.stopcovid.geolocation.controllers.GeolocationController;
 import jha.stopcovid.geolocation.models.GeolocationData;
+import jha.stopcovid.geolocation.services.GeolocationService;
 import jha.stopcovid.user.controllers.UserController;
 import jha.stopcovid.user.models.User;
 import jha.stopcovid.user.repositories.UserRepository;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,10 +29,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-class userTests {
+class geolocationTestsIntegration {
 
 	@Autowired
-	private UserController controllerUser;
+	private GeolocationController controllerKafka;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -38,41 +40,26 @@ class userTests {
 	@Autowired
 	private UserRepository userRepository;
 
+	@MockBean
+	private GeolocationService geolocationService;
+
 	@BeforeEach
 	public void setup() {
 		User user1 = new User("74b4a039-4b17-462c-ab68-fc4f208a504d", "toto@gmail.com", false, "1605886929");
 		userRepository.saveAndFlush(user1);
 	}
-
 	@Test
-	void putUsersRequestTestUserNotExists() throws Exception{
-		Exception exception = Assertions.assertThrows(NestedServletException.class,
-				() -> {mockMvc.perform(put("/users/74b4a039-4b17-462c-ab68-fc4f208a50as").contentType(MediaType.APPLICATION_JSON));});
-		assertTrue(exception.getCause().toString().contains("java.lang.NullPointerException"));
-		assertTrue(exception.getMessage().contains("user does not exist"));
+	void postLocationRequestTestSucceed() throws Exception{
+		String json = asJsonString(new GeolocationData("74b4a039-4b17-462c-ab68-fc4f208a504d", 43.63496, 3.873338, (long) 1605886929));
+		mockMvc.perform(post("/locations").contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isOk());
 	}
 
 	@Test
-	void putUsersRequestTestUserAlreadyPositive() throws Exception{
-		mockMvc.perform(put("/users/74b4a039-4b17-462c-ab68-fc4f208a504d").contentType(MediaType.APPLICATION_JSON));
-		Exception exception = Assertions.assertThrows(NestedServletException.class,
-				() -> {mockMvc.perform(put("/users/74b4a039-4b17-462c-ab68-fc4f208a504d").contentType(MediaType.APPLICATION_JSON));});
-		assertTrue(exception.getCause().toString().contains("java.lang.IllegalArgumentException"));
-		assertTrue(exception.getMessage().contains("user is already positive"));
+	void postLocationRequestTestBadBody() throws Exception{
+		String json = asJsonString(new GeolocationData("74b4a039-4b17-462c-ab68-fc4f208a504d", 43.63496, 3.873338, (long) 1605886929));
+		mockMvc.perform(post("/locations").contentType(MediaType.APPLICATION_JSON).content("{toto: toto2}")).andExpect(status().isBadRequest());
 	}
 
-	@Test
-	void putUsersRequestTestUserSucceed() throws Exception{
-		mockMvc.perform(put("/users/74b4a039-4b17-462c-ab68-fc4f208a504d").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-	}
-
-	@Test
-	void putUsersRequestTestBadParam() throws Exception{
-		Exception exception = Assertions.assertThrows(NestedServletException.class,
-				() -> {mockMvc.perform(put("/users/ghj").contentType(MediaType.APPLICATION_JSON));});
-
-		assertTrue(exception.getMessage().contains("id not valid"));
-	}
 
 	private String asJsonString(Object obj){
 		try{

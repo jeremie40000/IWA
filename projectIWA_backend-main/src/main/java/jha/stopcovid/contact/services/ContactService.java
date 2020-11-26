@@ -41,7 +41,7 @@ public class ContactService {
         }
     }
 
-    private boolean dateExpired(Timestamp t1, Timestamp t2) {
+    public boolean dateExpired(Timestamp t1, Timestamp t2) {
         return Math.abs(t1.getTime() - t2.getTime()) > MILLIS_FOR_10_DAY;
     }
 
