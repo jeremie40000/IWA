@@ -1,4 +1,4 @@
-FROM openjdk
+FROM openjdk:11
 LABEL maintainer=jerem
 WORKDIR /app
 COPY build/docker/libs libs/

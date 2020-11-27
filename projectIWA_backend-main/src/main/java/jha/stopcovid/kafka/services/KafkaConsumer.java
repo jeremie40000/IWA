@@ -6,6 +6,7 @@ import jha.stopcovid.contact.business.ContactDataset;
 import jha.stopcovid.contact.services.ContactService;
 import jha.stopcovid.geolocation.business.LocalisationDataset;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +26,15 @@ public class KafkaConsumer {
 
     private final KafkaProducer kafkaProducer;
 
+    @Value("${spring.kafka.producer.bootstrap-servers}")
+    String serverAddress;
+
     @Autowired
     ContactService contactService;
 
 
     public KafkaConsumer(KafkaProducer kafkaProducer) {
+        System.out.println("ADDRESS KAFKA : " + serverAddress);
         this.kafkaProducer = kafkaProducer;
     }
 
@@ -41,6 +46,7 @@ public class KafkaConsumer {
         if(timestampNewData == localisationDataset.getTimestamp()){
             ArrayList<ContactData> contacts = localisationDataset.geolocationComparison(geolocationData);
             for (int element = 0; element < contacts.size(); element++) {
+                System.out.println("CONTACT SENT TO TOPIC");
                 kafkaProducer.sendInformation(contacts.get(element), "topic-suspicious");
             }
             localisationDataset.addValue(geolocationData);
@@ -70,6 +76,7 @@ public class KafkaConsumer {
         for(ContactData contact : suspiciousList.getContactList1()){
             if(contact.getIdUser1().equals(info.getIdUser1()) && contact.getIdUser2().equals(info.getIdUser2())){
                 if(!contactsIdAddedToDB.contains(info.getIdUser1()+info.getIdUser2())){
+                    System.out.println("CONTACT SUSPICIOUS ADDED TO DB");
                     contactService.addContactToDB(info);
                     contactsIdAddedToDB.add(info.getIdUser1()+info.getIdUser2());
                 }
