@@ -4,7 +4,7 @@ import jha.stopcovid.geolocation.models.GeolocationData;
 import jha.stopcovid.kafka.services.KafkaProducer;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RestController
 @RequestMapping("/locations")
 public class GeolocationController {

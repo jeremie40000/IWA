@@ -56,6 +56,9 @@ services:
       build: projectIWA_backend-main/.
       ports:
         - 5000:5000
+      environment:
+        MAIL_USERNAME: "${MAIL_USERNAME}"
+        MAIL_PASSWORD: "${MAIL_PASSWORD}"
       depends_on:
         - postgres
         - zookeeper

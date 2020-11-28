@@ -2,7 +2,7 @@ export const fakeDataArrays =
     [
         [
             {latitude: '43.639821', longitude: '3.855361', idUser: '74b4a039-4b17-462c-ab68-fc4f208a50bd'},
-            {latitude: '43.639916', longitude: '3.855276', idUser: '74b4a039-4b17-462c-ab68-fc4f208a25bd'},//avec celui d'avant
+            {latitude: '43.639916', longitude: '3.855276', idUser: '2eba275c-910b-448e-b35d-4c3636e6b73d'},//avec celui d'avant
             {latitude: '43.639916', longitude: '3.856316', idUser: '74b4a039-4b17-462c-ab68-fc4f208a50az'},
             {latitude: '43.639928', longitude: '3.847529', idUser: '74b4a039-4b17-462c-ab68-fc4f208a542s'},
             {latitude: '43.639818', longitude: '3.847544', idUser: '74b4a039-4b17-462c-ab68-fc4f208a50sq'},//avec celui d'avant
@@ -14,7 +14,7 @@ export const fakeDataArrays =
         ],
         [
             {latitude: '43.639821', longitude: '3.855361', idUser: '74b4a039-4b17-462c-ab68-fc4f208a50bd'},
-            {latitude: '43.639916', longitude: '3.855276', idUser: '74b4a039-4b17-462c-ab68-fc4f208a25bd'},//avec celui d'avant},//avec celui d'avant
+            {latitude: '43.639916', longitude: '3.855276', idUser: '2eba275c-910b-448e-b35d-4c3636e6b73d'},//avec celui d'avant},//avec celui d'avant
             {latitude: '43.639916', longitude: '3.856316', idUser: '74b4a039-4b17-462c-ab68-fc4f208a50az'},
             {latitude: '43.639928', longitude: '3.847529', idUser: '74b4a039-4b17-462c-ab68-fc4f208a542s'},
             {latitude: '43.610179', longitude: '3.895911', idUser: '74b4a039-4b17-462c-ab68-fc4f208a50sq'},//avec celui d'avant},//avec celui d'avant
